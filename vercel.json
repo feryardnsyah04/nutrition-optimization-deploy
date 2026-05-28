@@ -6,8 +6,9 @@
       "framework": "vite"
     },
     "backend": {
-      "root": "backend",
-      "routePrefix": "/_/backend"
+      "entrypoint": "backend/src/app.js",
+      "routePrefix": "/v1",
+      "framework": "express"
     }
   }
 }
