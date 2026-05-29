@@ -138,7 +138,7 @@ function LocalProvider({ children }) {
         email: normalizedEmail,
         password,
         options: {
-          data: { name, bio: 'Siap mengoptimalkan nutrisi harian dengan NutriAI.' },
+          data: { name, bio: 'Siap mengoptimalkan nutrisi harian dengan NutriMeal AI.' },
         },
       });
       if (signUpError) {
@@ -150,7 +150,7 @@ function LocalProvider({ children }) {
           user_id: data.user.id,
           email: normalizedEmail,
           name,
-          bio: 'Siap mengoptimalkan nutrisi harian dengan NutriAI.',
+          bio: 'Siap mengoptimalkan nutrisi harian dengan NutriMeal AI.',
           goal: 'Jaga Kesehatan',
           budget: 15000,
           age: 18,
@@ -175,7 +175,7 @@ function LocalProvider({ children }) {
       name: name.trim(),
       email: normalizedEmail,
       password,
-      bio: 'Siap mengoptimalkan nutrisi harian dengan NutriAI.',
+      bio: 'Siap mengoptimalkan nutrisi harian dengan NutriMeal AI.',
     };
 
     setUsers((currentUsers) => [...currentUsers, nextUser]);

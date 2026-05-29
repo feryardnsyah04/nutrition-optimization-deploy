@@ -17,10 +17,7 @@
   --orange: #fb923c;
   --yellow: #facc15;
   font-family: 'DM Sans', sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(74, 222, 128, 0.15), transparent 32%),
-    radial-gradient(circle at top right, rgba(167, 139, 250, 0.12), transparent 24%),
-    linear-gradient(180deg, #07101d 0%, #050b15 100%);
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -37,10 +34,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(74, 222, 128, 0.12), transparent 28%),
-    radial-gradient(circle at right 18%, rgba(167, 139, 250, 0.1), transparent 24%),
-    linear-gradient(180deg, #07101d 0%, #050b15 100%);
+  background: var(--bg);
 }
 
 a {
@@ -109,20 +103,19 @@ textarea:focus {
   height: 26rem;
   content: '';
   border-radius: 999px;
-  filter: blur(90px);
-  opacity: 0.45;
+  filter: none;
 }
 
 .app-shell::before {
   top: -9rem;
   left: -10rem;
-  background: rgba(74, 222, 128, 0.28);
+  background: transparent;
 }
 
 .app-shell::after {
   right: -11rem;
   bottom: -10rem;
-  background: rgba(167, 139, 250, 0.24);
+  background: transparent;
 }
 
 .topbar {
@@ -134,7 +127,7 @@ textarea:focus {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem clamp(1.1rem, 3vw, 2.25rem);
-  background: rgba(5, 12, 22, 0.78);
+  background: rgba(5, 12, 22, 1);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
 }
@@ -232,8 +225,8 @@ textarea:focus {
 .topbar__action,
 .button--primary {
   color: #08110b;
-  background: linear-gradient(135deg, var(--green), var(--green-deep));
-  box-shadow: 0 18px 44px rgba(34, 197, 94, 0.24);
+  background: var(--green);
+  box-shadow: none;
 }
 
 .topbar__action--ghost,
@@ -248,8 +241,8 @@ textarea:focus {
 
 .button--violet {
   color: #ffffff;
-  background: linear-gradient(135deg, #a78bfa, #7c3aed);
-  box-shadow: 0 18px 44px rgba(124, 58, 237, 0.24);
+  background: #a78bfa;
+  box-shadow: none;
 }
 
 .button--full {
@@ -262,7 +255,7 @@ textarea:focus {
 
 .button--saved {
   color: #0b160e;
-  background: linear-gradient(135deg, #86efac, #4ade80);
+  background: #86efac;
 }
 
 .topbar__action:hover,
@@ -283,21 +276,19 @@ textarea:focus {
 }
 
 .page--home {
-  background:
-    radial-gradient(circle at 85% 12%, rgba(74, 222, 128, 0.08), transparent 24%),
-    linear-gradient(180deg, rgba(5, 11, 21, 0), rgba(5, 11, 21, 0.2));
+  background: var(--bg);
 }
 
 .page--menu {
-  background: radial-gradient(circle at 12% 20%, rgba(74, 222, 128, 0.08), transparent 18%);
+  background: var(--bg);
 }
 
 .page--optimizer {
-  background: radial-gradient(circle at 88% 12%, rgba(167, 139, 250, 0.12), transparent 20%);
+  background: var(--bg);
 }
 
 .page--profile {
-  background: radial-gradient(circle at 50% 0, rgba(82, 180, 255, 0.12), transparent 26%);
+  background: var(--bg);
 }
 
 .hero-section,
@@ -913,8 +904,8 @@ textarea:focus {
   font-size: 1.7rem;
   font-weight: 700;
   color: #09120b;
-  background: linear-gradient(135deg, #86efac, #22c55e);
-  box-shadow: 0 18px 44px rgba(34, 197, 94, 0.24);
+  background: #86efac;
+  box-shadow: none;
 }
 
 .profile-panel {
