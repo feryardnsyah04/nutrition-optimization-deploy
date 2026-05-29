@@ -30,24 +30,22 @@ function HomePage() {
           <span className="eyebrow">{authUser ? `${greeting}, ${authUser.name}` : 'Smart Nutrition Experience'}</span>
           <h1>
             Optimasi Menu Makanan Anak
-            <span> dengan NutriAI</span>
+            <span> dengan </span>
+            <span> NutriMeal AI</span>
           </h1>
           <p>
-            NutriAI membantu pengguna menemukan menu makan siang yang lebih terarah,
+            NutriMeal AI membantu pengguna menemukan menu makan siang yang lebih terarah,
             mengoptimalkan target gizi, dan mengelola profil personal lewat frontend yang responsif.
           </p>
           <div className="hero-section__actions">
-            <Link className="button button--primary" to={authUser ? '/ai-optimizer' : '/register'}>
-              {authUser ? 'Buka AI Optimizer' : 'Buat Akun'}
-            </Link>
-            <Link className="button button--secondary" to={authUser ? '/menu' : '/login'}>
-              {authUser ? 'Jelajahi Menu' : 'Masuk ke Demo'}
+            <Link className="button button--primary" to={authUser ? '/ai-optimizer' : '/login'}>
+              {authUser ? 'Buka AI Optimizer' : 'Masuk ke Demo'}
             </Link>
           </div>
         </div>
 
         <div className="hero-illustration">
-          <img src={heroImage} alt="Ilustrasi NutriAI" />
+          <img src={heroImage} alt="Ilustrasi NutriMeal AI" />
         </div>
       </section>
 

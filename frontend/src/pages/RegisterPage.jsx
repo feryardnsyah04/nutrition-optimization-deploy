@@ -43,7 +43,7 @@ function RegisterPage() {
     <section className="auth-page">
       <div className="auth-hero">
         <span className="eyebrow">Register Page</span>
-        <h1>Buat akun untuk memulai pengalaman NutriAI</h1>
+        <h1>Buat akun untuk memulai pengalaman NutriMeal AI</h1>
         <p>Daftar sekarang untuk mengakses fitur personalisasi nutrisi, rekomendasi menu, dan pengalaman sehat yang lebih terarah.</p>
       </div>
 
