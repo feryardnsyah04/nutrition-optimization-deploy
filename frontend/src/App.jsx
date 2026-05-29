@@ -5,7 +5,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { LocalProvider, useLocal } from './context/LocalContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import MenuPage from './pages/MenuPage';
 import OptimizerPage from './pages/OptimizerPage';
 import ProfilePage from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
@@ -29,14 +28,6 @@ function AppRoutes() {
           )}
         />
         <Route
-          path="/menu"
-          element={(
-            <ProtectedRoute>
-              <MenuPage />
-            </ProtectedRoute>
-          )}
-        />
-        <Route
           path="/ai-optimizer"
           element={(
             <ProtectedRoute>
@@ -53,9 +44,9 @@ function AppRoutes() {
           )}
         />
         <Route path="/dashboard" element={<Navigate to="/homepage" replace />} />
-        <Route path="/rekomendasi" element={<Navigate to="/menu" replace />} />
-        <Route path="/recommendation" element={<Navigate to="/menu" replace />} />
-        <Route path="/recomendation" element={<Navigate to="/menu" replace />} />
+        <Route path="/rekomendasi" element={<Navigate to="/ai-optimizer" replace />} />
+        <Route path="/recommendation" element={<Navigate to="/ai-optimizer" replace />} />
+        <Route path="/recomendation" element={<Navigate to="/ai-optimizer" replace />} />
         <Route path="*" element={<Navigate to={authUser ? '/homepage' : '/'} replace />} />
       </Routes>
     </Layout>
