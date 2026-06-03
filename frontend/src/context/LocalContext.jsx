@@ -34,12 +34,12 @@ const initialProfile = {
 };
 
 const initialOptimizerResult = {
-  bmr: 1549,
-  tdee: 2401,
-  target: 2401,
-  protein: 104,
-  carbs: 270,
-  fat: 67,
+  bmr: 0,
+  tdee: 0,
+  target: 0,
+  protein: 0,
+  carbs: 0,
+  fat: 0,
   recommended: lunchMenus.slice(0, 3),
 };
 
@@ -150,12 +150,12 @@ function LocalProvider({ children }) {
           user_id: data.user.id,
           email: normalizedEmail,
           name,
-          bio: 'Siap mengoptimalkan nutrisi harian dengan NutriMeal AI.',
+          bio,
           goal: 'Jaga Kesehatan',
-          budget: 15000,
-          age: 18,
-          weight: 60,
-          height: 160,
+          budget: 0,
+          age: 0,
+          weight: 0,
+          height: 0,
           activity: 'Sedang',
         }]);
         if (profileError) {
