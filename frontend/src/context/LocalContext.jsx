@@ -215,7 +215,17 @@ function LocalProvider({ children }) {
       const nextAuthUser = { id: userId, name: userName, email: normalizedEmail, bio: profileData?.bio || '' };
 
       setAuthUser(nextAuthUser);
-      setProfile({ ...profileData, name: userName, email: normalizedEmail });
+      setProfile({
+        name: userName,
+        email: normalizedEmail,
+        bio: profileData?.bio || '',
+        goal: profileData?.goal || '',
+        budget: profileData?.budget || 0,
+        age: profileData?.age || 0,
+        weight: profileData?.weight || 0,
+        height: profileData?.height || 0,
+        activity: profileData?.activity || '',
+      });
       setSavedMenuIds(savedMenuIdsData || []);
       return;
     }
