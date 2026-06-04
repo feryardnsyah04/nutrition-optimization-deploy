@@ -22,6 +22,7 @@ function OptimizerPage() {
   const [activity, setActivity] = useState(profile.activity);
   const [step, setStep] = useState(optimizerResult ? 3 : 1);
   const [result, setResult] = useState(optimizerResult);
+  const [aiSuggestion, setAiSuggestion] = useState('');
 
   function calculateRecommendation() {
     const ageValue = Number(age);
@@ -59,26 +60,51 @@ function OptimizerPage() {
   }
 
   async function handleGenerate() {
+    const budgetValue = profile.budget || 15000;
+    
     setStep(2);
-    await new Promise((resolve) => setTimeout(resolve, 1300));
 
-    const nextResult = calculateRecommendation();
+    try {
+      const response = await fetch('/v1/optimizes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          budget_maksimal: budgetValue,
+          target_kalori: calculateRecommendation()?.target || 2000,
+        }),
+      });
 
-    if (!nextResult) {
-      setStep(1);
-      return;
+      if (!response.ok) throw new Error('AI optimization failed');
+
+      const apiData = await response.json();
+      
+      const nextResult = calculateRecommendation();
+
+      setAiSuggestion(apiData.ringkasan?.catatan_ai || 'Analisis AI berhasil diproses.');
+
+      if (!nextResult) {
+        setStep(1);
+        return;
+      }
+
+      setResult(nextResult);
+      setStep(3);
+      saveOptimizerResult(nextResult);
+      updateProfile({
+        goal,
+        activity,
+        age: Number(age),
+        weight: Number(weight),
+        height: Number(height),
+      });
+    } catch (error) {
+      console.error('AI optimization error:', error);
+      setAiSuggestion('Maaf, analisis AI tidak tersedia saat ini. Silakan coba lagi nanti.');
+      
+      const nextResult = calculateRecommendation();
+      setResult(nextResult);
+      setStep(3);
     }
-
-    setResult(nextResult);
-    setStep(3);
-    saveOptimizerResult(nextResult);
-    updateProfile({
-      goal,
-      activity,
-      age: Number(age),
-      weight: Number(weight),
-      height: Number(height),
-    });
   }
 
   return (
@@ -190,6 +216,13 @@ function OptimizerPage() {
                   </article>
                 ))}
               </div>
+
+              {aiSuggestion ? (
+                <div className="feature-panel" style={{ marginTop: '1rem' }}>
+                  <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>Saran dari GEN AI</h3>
+                  <p style={{ color: 'var(--muted-strong)', lineHeight: '1.6' }}>{aiSuggestion}</p>
+                </div>
+              ) : null}
 
               <div className="result-meta">
                 <span>BMR {result.bmr} kkal</span>
