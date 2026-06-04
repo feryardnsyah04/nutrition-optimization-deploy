@@ -138,7 +138,7 @@ function LocalProvider({ children }) {
         email: normalizedEmail,
         password,
         options: {
-          data: { name, bio: 'Siap mengoptimalkan nutrisi harian dengan NutriMeal AI.' },
+          data: { name, bio: '' },
         },
       });
       if (signUpError) {
@@ -182,8 +182,9 @@ function LocalProvider({ children }) {
 
   async function login({ email, password }) {
     const normalizedEmail = email.trim().toLowerCase();
+    const isDemoAccount = normalizedEmail === 'demo@nutriai.local';
 
-    if (useBackendStorage) {
+    if (!isDemoAccount && useBackendStorage) {
       const payload = await apiRequest('/v1/auth/login', {
         method: 'POST',
         body: { email: normalizedEmail, password },
@@ -196,7 +197,7 @@ function LocalProvider({ children }) {
       return;
     }
 
-    if (useSupabaseDirect) {
+    if (!isDemoAccount && useSupabaseDirect) {
       const { data: authData, error: signInError } = await supabase.auth.signInWithPassword({
         email: normalizedEmail,
         password,
@@ -208,14 +209,13 @@ function LocalProvider({ children }) {
       const authUser = authData?.user;
       const userId = authUser?.id;
       const userName = authUser?.user_metadata?.name || normalizedEmail.split('@')[0];
-      const userBio = authUser?.user_metadata?.bio || '';
 
       const profileData = await fetchSupabaseProfile(userId);
       const savedMenuIdsData = await fetchSupabaseSavedMenuIds(userId);
-      const nextAuthUser = { id: userId, name: userName, email: normalizedEmail, bio: userBio };
+      const nextAuthUser = { id: userId, name: userName, email: normalizedEmail, bio: profileData?.bio || '' };
 
       setAuthUser(nextAuthUser);
-      setProfile({ ...initialProfile, ...(profileData || {}), name: userName, bio: userBio });
+      setProfile({ ...profileData, name: userName, email: normalizedEmail });
       setSavedMenuIds(savedMenuIdsData || []);
       return;
     }
