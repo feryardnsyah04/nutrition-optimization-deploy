@@ -34,6 +34,7 @@ function ProfilePage() {
         <div className="section-heading">
           <span className="eyebrow">Personal settings</span>
           <h1>Profile</h1>
+          <p>Halaman profil menjaga nuansa referensi sekaligus memberi area edit yang tetap sederhana di frontend.</p>
         </div>
 
         <div className="profile-header">

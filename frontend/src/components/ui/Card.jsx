@@ -17,11 +17,11 @@ export function CardAction({ children, className = '' }) {
 }
 
 export function CardTitle({ children, className = '' }) {
-  return <h3 className={`card-title text-lg font-semibold ${className}`}>{children}</h3>;
+  return <h3 className={`card-title text-lg font-semibold px-4 py-2 ${className}`}>{children}</h3>;
 }
 
 export function CardDescription({ children, className = '' }) {
-  return <p className={`card-desc text-sm text-gray-700 ${className}`}>{children}</p>;
+  return <p className={`card-desc text-sm text-gray-700 px-4 py-1 ${className}`}>{children}</p>;
 }
 
 export function CardFooter({ children, className = '' }) {

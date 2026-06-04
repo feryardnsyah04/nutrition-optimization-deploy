@@ -71,7 +71,7 @@ function HomePage() {
               title={feature.title}
               description={feature.copy}
               image={feature.image}
-              buttonText={authUser && idx === 0 ? 'Buka AI Optimizer' : null}
+              buttonText={null}
               to={feature.to}
             />
           ))}

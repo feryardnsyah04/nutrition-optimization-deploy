@@ -10,6 +10,7 @@ const guestLinks = [
 
 const memberLinks = [
   { to: '/homepage', label: 'Homepage' },
+  { to: '/menu', label: 'Menu' },
   { to: '/ai-optimizer', label: 'AI Optimizer' },
   { to: '/profile', label: 'Profile' },
 ];
@@ -28,10 +29,10 @@ function Layout({ children, authUser, onLogout }) {
   return (
     <div className="app-shell">
       <header className={`topbar ${isAuthPage ? 'topbar--auth' : ''}`}>
-        <NavLink className="brand" to={authUser ? '/homepage' : '/'} aria-label="NutriMeal AI">
-          <img className="brand__logo" src={logo} alt="NutriMeal AI logo" />
+        <NavLink className="brand" to={authUser ? '/homepage' : '/'} aria-label="NutriAI">
+          <img className="brand__logo" src={logo} alt="NutriAI logo" />
           <span className="brand__text">
-            <strong>NutriMeal AI</strong>
+            <strong>NutriAI</strong>
             <small>Smart meal optimizer for a healthier routine</small>
           </span>
         </NavLink>

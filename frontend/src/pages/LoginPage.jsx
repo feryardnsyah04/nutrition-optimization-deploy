@@ -17,10 +17,11 @@ function LoginPage() {
     setIsSubmitting(true);
 
     try {
-      await login({ email, password });
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      login({ email, password });
       navigate('/homepage');
     } catch (error) {
-      setErrorMessage(error.message || 'Login gagal. Periksa email dan password.');
+      setErrorMessage(error.message);
     } finally {
       setIsSubmitting(false);
     }
@@ -30,7 +31,7 @@ function LoginPage() {
     <section className="auth-page">
       <div className="auth-hero">
         <span className="eyebrow">Login Page</span>
-        <h1>Masuk ke workspace NutriMeal AI</h1>
+        <h1>Masuk ke workspace NutriAI</h1>
         <p>Gunakan akun demo atau akun yang Anda daftarkan.</p>
       </div>
 
