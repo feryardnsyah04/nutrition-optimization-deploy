@@ -65,7 +65,7 @@ function OptimizerPage() {
     setStep(2);
 
     try {
-      const response = await fetch('/v1/optimizes', {
+      const response = await fetch('https://feryardnsyah-nutri-optimize.hf.space/optimizes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
